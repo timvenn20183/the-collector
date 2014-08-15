@@ -1,0 +1,12 @@
+The online collections database aims to be a generic and highly configurable web based information system.
+
+Some of the key features are listed below:
+
+- Bulk import and maintenance via spreadsheet
+
+Some of the gems and technologies used:
+
+- BootStrap
+- Carrierwave
+
+
