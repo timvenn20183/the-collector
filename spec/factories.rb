@@ -20,14 +20,20 @@ FactoryGirl.define do
     end
 
     factory :rolodex do |r|
-	name "Microsoft"
-	rolodex_type 0
-	email ""
-	cell ""
-	tel ""
-	history ""
-	address ""
-	site_id 1	
+    	name "Microsoft"
+    	rolodex_type 0
+    	email ""
+    	cell ""
+    	tel ""
+    	history ""
+    	address ""
+    	site_id 1	
     end
+    
+    factory :condition do |c|
+        name "Fair"
+        site_id 1
+    end
+
 
 end

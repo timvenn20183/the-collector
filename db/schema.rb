@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816164352) do
+ActiveRecord::Schema.define(version: 20140816182917) do
+
+  create_table "conditions", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "conditions", ["site_id"], name: "index_conditions_on_site_id"
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

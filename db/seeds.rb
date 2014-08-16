@@ -22,3 +22,8 @@ item = Item.new
 item.name = "Microsoft Adventure"
 item.site = Site.first
 item.save
+
+condition = Condition.new
+condition.name = "Fair"
+condition.site = Site.first
+condition.save
