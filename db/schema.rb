@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816182917) do
+ActiveRecord::Schema.define(version: 20140816185049) do
 
   create_table "conditions", force: true do |t|
     t.string   "name"
@@ -84,5 +84,16 @@ ActiveRecord::Schema.define(version: 20140816182917) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "virtualcollections", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "site_id"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "virtualcollections", ["site_id"], name: "index_virtualcollections_on_site_id"
 
 end

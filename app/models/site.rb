@@ -4,6 +4,7 @@ class Site < ActiveRecord::Base
     has_many :items
     has_many :rolodexes
     has_many :conditions
+    has_many :virtualcollections
 
     # Validations
     validates :title, presence: {:message => "Please supply a title for this site"}

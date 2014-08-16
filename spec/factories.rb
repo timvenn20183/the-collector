@@ -35,5 +35,9 @@ FactoryGirl.define do
         site_id 1
     end
 
+    factory :virtualcollection do |v|
+        name "DOS Games"
+        site_id 1
+    end
 
 end

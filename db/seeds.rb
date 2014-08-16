@@ -27,3 +27,8 @@ condition = Condition.new
 condition.name = "Fair"
 condition.site = Site.first
 condition.save
+
+vc = Virtualcollection.new
+vc.name = "DOS Games"
+vc.site = Site.first
+vc.save
