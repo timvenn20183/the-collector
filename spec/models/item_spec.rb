@@ -8,12 +8,15 @@ describe Item do
         build(:item, site_id: nil).should_not be_valid
     end
     it "should have a matching alphabet letter" do
-        create(:item).alphabet_letter.should eq(create(:item).name[0].upcase)
+        create(:item, :site => create(:site)).alphabet_letter.should eq(create(:item, :site => create(:site)).name[0].upcase)
     end
     it "should links to a site" do
-        item = create(:item)
         site = create(:site)
+        item = create(:item, :site => create(:site))
         item.site = site
         item.save.should eq(true)
+    end
+    it "should have a valid site" do
+	build(:item, :site => nil).should_not be_valid
     end
 end

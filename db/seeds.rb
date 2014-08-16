@@ -10,4 +10,15 @@ site = Site.new
 site.title = "oldcomputers"
 site.email = "tim@nevyn.co.za"
 site.password = "test"
+site.code = "oldcomputers"
 site.save
+
+rolodex = Rolodex.new
+rolodex.name = "Microsoft"
+rolodex.site = Site.first
+rolodex.save
+
+item = Item.new
+item.name = "Microsoft Adventure"
+item.site = Site.first
+item.save

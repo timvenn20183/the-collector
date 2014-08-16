@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :year
       t.float :value
       t.float :cost
-      t.string :cached_slug
+      t.string :slug
       t.string :alphabet_letter
       t.string :reference_number
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815121322) do
+ActiveRecord::Schema.define(version: 20140816164352) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140815121322) do
     t.integer  "year"
     t.float    "value"
     t.float    "cost"
-    t.string   "cached_slug"
+    t.string   "slug"
     t.string   "alphabet_letter"
     t.string   "reference_number"
     t.datetime "created_at"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 20140815121322) do
   end
 
   add_index "items", ["site_id"], name: "index_items_on_site_id"
+
+  create_table "rolodexes", force: true do |t|
+    t.string   "name"
+    t.integer  "rolodex_type"
+    t.string   "email"
+    t.string   "cell"
+    t.string   "tel"
+    t.text     "history"
+    t.text     "address"
+    t.string   "slug"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rolodexes", ["site_id"], name: "index_rolodexes_on_site_id"
 
   create_table "sites", force: true do |t|
     t.string   "title"
