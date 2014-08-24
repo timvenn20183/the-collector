@@ -45,6 +45,8 @@ gem 'spring',        group: :development
 #gem 'debugger', group: [:development, :test]
 gem 'byebug', group: [:development, :test]
 
+gem 'god'
+
 group :development, :test do
     gem 'rspec-rails'
     gem 'capybara' #, :git => 'git://github.com/jnicklas/capybara.git'
@@ -53,4 +55,5 @@ group :development, :test do
     gem 'rb-fsevent'
     gem 'guard-rspec'
     gem "factory_girl_rails", "~> 4.0", :require => false
+    gem 'shoulda-matchers'
 end

@@ -40,4 +40,9 @@ FactoryGirl.define do
         site_id 1
     end
 
+    factory :category do |c|
+        name "Adventure"
+        site_id 1
+    end
+
 end
