@@ -1,23 +1,63 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+    site:
+        validations:
+            title: "Please supply a title for this site"
+            email: "Please supply and email address"
+            email_unique: "The email address supplied is already in use. Please provide an alternate email address"
+            password: "Please supply a password. Passwords may not be blank"
+            code: "Please supply a site code"
+            code_unique: "The site code you have selected is already in use. Please choose and alternate code"
+
+    category:
+        validations:
+            name: "Please supply a name for this category"
+            name_unique: "A category name must be unqiue"
+            site: "A category must be associated to a valid site"
+
+    condition:
+        validations:
+            name: "Please supply a name for this condition"
+            name_unique: "A condition name must be unqiue"
+            site: "A condition must be associated to a valid site"
+
+    item:
+        validations:
+            name: "An item must have a name"
+            site_id: "An item should not exist without an associated site"
+            site: "The site this item references does not exist"
+
+    rolodex:
+        validations:
+            name: "Rolodex entry must have a name"
+            name_unique: "Rolodex entry name must be unqiue"
+            site: "Rolodex entry must be associated with a site"
+
+    virtualcollection:
+        validations:
+            name: "A Virtual Collection must have a name"
+            site: "A virtual Collection must belong to a valid site"
+            name_unique: "A Virtual Collection name must be unqiue"
+            site_id: "A virtual Collection must belong to a site"
+
+    itemfield:
+        validations:
+            name: "An item field must have a name"
+            site: "An item field must belong to a valid site"
+            name_unique: "An item field name must be unique"
+    
+    fieldoption:
+        validations:
+            name: "A fieldoption must have a valid name"
+            name_unique: "A fieldoption must be unique with in an itemfield"
+            itemfield: "A fieldoption must belong to a valid itemfield"
+
+    dialog:
+        validations:
+            code: "A dialog must have a code"
+            code_unique: "A dialog must have a unique code"
+            site: "A dialog must be associated to a site"
+        defaults:
+            content: "Please enter some relevant text for this dialog. You may delete this text if you wish to leave the text blank"
+
+
+        

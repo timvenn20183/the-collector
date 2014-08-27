@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816202335) do
+ActiveRecord::Schema.define(version: 20140827085626) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20140816202335) do
 
   add_index "categories", ["site_id"], name: "index_categories_on_site_id"
 
+  create_table "categories_items", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "item_id"
+  end
+
+  add_index "categories_items", ["category_id", "item_id"], name: "categories_items_index", unique: true
+
   create_table "conditions", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -33,6 +40,40 @@ ActiveRecord::Schema.define(version: 20140816202335) do
   end
 
   add_index "conditions", ["site_id"], name: "index_conditions_on_site_id"
+
+  create_table "conditions_items", id: false, force: true do |t|
+    t.integer "condition_id"
+    t.integer "item_id"
+  end
+
+  add_index "conditions_items", ["condition_id", "item_id"], name: "conditions_items_index", unique: true
+
+  create_table "dialogs", force: true do |t|
+    t.string   "code"
+    t.string   "content"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dialogs", ["site_id"], name: "index_dialogs_on_site_id"
+
+  create_table "fieldoptions", force: true do |t|
+    t.string   "name"
+    t.integer  "itemfield_id"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fieldoptions", ["itemfield_id"], name: "index_fieldoptions_on_itemfield_id"
+
+  create_table "fieldoptions_items", id: false, force: true do |t|
+    t.integer "fieldoption_id"
+    t.integer "item_id"
+  end
+
+  add_index "fieldoptions_items", ["fieldoption_id", "item_id"], name: "fieldoptions_items_index"
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -46,6 +87,16 @@ ActiveRecord::Schema.define(version: 20140816202335) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "itemfields", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "itemfields", ["site_id"], name: "index_itemfields_on_site_id"
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -64,6 +115,20 @@ ActiveRecord::Schema.define(version: 20140816202335) do
   end
 
   add_index "items", ["site_id"], name: "index_items_on_site_id"
+
+  create_table "items_rolodexes", id: false, force: true do |t|
+    t.integer "item_id"
+    t.integer "rolodex_id"
+  end
+
+  add_index "items_rolodexes", ["item_id", "rolodex_id"], name: "items_rolodexes_index", unique: true
+
+  create_table "items_virtualcollections", id: false, force: true do |t|
+    t.integer "item_id"
+    t.integer "virtualcollection_id"
+  end
+
+  add_index "items_virtualcollections", ["item_id", "virtualcollection_id"], name: "items_virtualcollections_index", unique: true
 
   create_table "rolodexes", force: true do |t|
     t.string   "name"

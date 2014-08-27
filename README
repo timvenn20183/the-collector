@@ -1,12 +1,18 @@
+## Online collectors database framework
+
 The online collections database aims to be a generic and highly configurable web based information system.
 
-Some of the key features are listed below:
+** Key features **
 
-- Bulk import and maintenance via spreadsheet
+- I18n support
 
-Some of the gems and technologies used:
+** Technologies **
 
 - BootStrap
 - Carrierwave
+
+** Tests **
+
+- Currently all the rspec tests report in English
 
 

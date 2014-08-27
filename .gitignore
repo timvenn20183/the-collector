@@ -14,3 +14,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+oc2.sublime-workspace
+import.xls

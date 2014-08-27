@@ -56,4 +56,6 @@ group :development, :test do
     gem 'guard-rspec'
     gem "factory_girl_rails", "~> 4.0", :require => false
     gem 'shoulda-matchers'
+    gem 'bullet'
+    gem 'habtm_generator'
 end
