@@ -6,76 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-puts "Creating new site"
-site = Site.new
-site.title = "oldcomputers"
-site.email = "tim@nevyn.co.za"
-site.password = "test"
-site.code = "oldcomputers"
-site.save
+puts "Creating a blog"
+blog = Blog.new
+blog.title = "Test Blog"
+blog.content = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum."
+blog.save
 
-site = Site.new
-site.title = "marklin"
-site.email = "marklin@test.com"
-site.password = "test"
-site.code = "marklin"
-site.save
+puts "Creating another blog"
+blog = Blog.new
+blog.title = "Another test Blog"
+blog.content = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum."
+blog.save
 
+blog = Blog.new
+blog.title = "The reason IBM is the way it is today"
+blog.content = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum."
+blog.save
 
-puts "Creating new rolodex"
-rolodex = Rolodex.new
-rolodex.name = "Microsoft"
-rolodex.site = Site.first
-rolodex.save
-
-puts "Creating new virutal collection"
-vc = Virtualcollection.new
-vc.name = "DOS Games"
-vc.site = Site.first
-vc.save
-
-puts "Creating new condition"
-condition = Condition.new
-condition.name = "Fair"
-condition.site = Site.first
-condition.save
-
-puts "Creating new category"
-cat = Category.new
-cat.name = "Adventure"
-cat.site = Site.first
-cat.save
-
-puts "Creating new item"
-item = Item.new
-item.name = "Microsoft Adventure"
-item.site = Site.first
-item.virtualcollections << vc
-item.conditions << condition
-item.categories << cat
-item.rolodexes << rolodex
-item.save
-
-
-puts "Creating a Item field"
-itemfield = Itemfield.new
-itemfield.name = "Media"
-itemfield.site = Site.first
-itemfield.save
-
-itemfield = Itemfield.new
-itemfield.name = "Format"
-itemfield.site = Site.last
-itemfield.save
-
-puts "Creating a field option"
-fieldoption = Fieldoption.new
-fieldoption.name = "CD-ROM"
-fieldoption.itemfield = Itemfield.first
-fieldoption.save
-
-fieldoption = Fieldoption.new
-fieldoption.name = "PAL"
-fieldoption.itemfield = Itemfield.last
-fieldoption.save
 

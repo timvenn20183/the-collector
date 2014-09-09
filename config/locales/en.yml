@@ -44,7 +44,7 @@ en:
             name: "An item field must have a name"
             site: "An item field must belong to a valid site"
             name_unique: "An item field name must be unique"
-    
+
     fieldoption:
         validations:
             name: "A fieldoption must have a valid name"
@@ -58,6 +58,17 @@ en:
             site: "A dialog must be associated to a site"
         defaults:
             content: "Please enter some relevant text for this dialog. You may delete this text if you wish to leave the text blank"
-
-
-        
+    blog:
+        validations:
+            title: "A blog should have a valid title"
+            site: "A blog must be associated with a site"
+    image:
+        validations:
+            name: "An image should have a name"
+            site: "An image must be assoicated with a site"
+    comment:
+        validations:
+            name: "Please supply your name"
+            subject: "Please supply a subject"
+            message: "Please supply your message"
+            email: "Please provide an email address"

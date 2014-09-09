@@ -21,18 +21,10 @@ describe Fieldoption do
 	end
 
 	it "should allow multiple instances f the same name across itemfields" do
-		site = create(:site)
-		test_itemfield_1 = create(:itemfield, site: site)
-		test_itemfield_2 = build(:itemfield, :alternate_itemfield, site: site)
+		test_itemfield_1 = create(:itemfield)
+		test_itemfield_2 = build(:itemfield, :alternate_itemfield)
 		test_fieldoption = create(:fieldoption, name: 'test_fieldoption', itemfield: test_itemfield_1)
 		build(:fieldoption, name: 'test_fieldoption', itemfield: test_itemfield_2).should be_valid
-	end
-
-	it "should belong to the same site as the associated itemfield" do
-		site = create(:site)
-		test_itemfield = create(:itemfield, site: site)
-		test_fieldoption = create(:fieldoption, name: 'test_fieldoption', itemfield: test_itemfield)
-		test_fieldoption.site.should eq(site)
 	end
 
 end

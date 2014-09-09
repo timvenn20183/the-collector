@@ -11,18 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827085626) do
+ActiveRecord::Schema.define(version: 20140909092822) do
+
+  create_table "blogs", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "publish_start"
+    t.datetime "publish_end"
+    t.boolean  "draft",         default: true
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blogs_images", id: false, force: true do |t|
+    t.integer "blog_id"
+    t.integer "image_id"
+  end
+
+  add_index "blogs_images", ["blog_id", "image_id"], name: "blogs_images_index", unique: true
 
   create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "slug"
     t.text     "note"
-    t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categories", ["site_id"], name: "index_categories_on_site_id"
+  create_table "categories_images", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "image_id"
+  end
+
+  add_index "categories_images", ["category_id", "image_id"], name: "categories_images_index", unique: true
 
   create_table "categories_items", id: false, force: true do |t|
     t.integer "category_id"
@@ -31,15 +53,28 @@ ActiveRecord::Schema.define(version: 20140827085626) do
 
   add_index "categories_items", ["category_id", "item_id"], name: "categories_items_index", unique: true
 
-  create_table "conditions", force: true do |t|
+  create_table "comments", force: true do |t|
     t.string   "name"
-    t.string   "slug"
-    t.integer  "site_id"
+    t.string   "email"
+    t.text     "message"
+    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "conditions", ["site_id"], name: "index_conditions_on_site_id"
+  create_table "conditions", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conditions_images", id: false, force: true do |t|
+    t.integer "condition_id"
+    t.integer "image_id"
+  end
+
+  add_index "conditions_images", ["condition_id", "image_id"], name: "conditions_images_index", unique: true
 
   create_table "conditions_items", id: false, force: true do |t|
     t.integer "condition_id"
@@ -47,16 +82,6 @@ ActiveRecord::Schema.define(version: 20140827085626) do
   end
 
   add_index "conditions_items", ["condition_id", "item_id"], name: "conditions_items_index", unique: true
-
-  create_table "dialogs", force: true do |t|
-    t.string   "code"
-    t.string   "content"
-    t.integer  "site_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "dialogs", ["site_id"], name: "index_dialogs_on_site_id"
 
   create_table "fieldoptions", force: true do |t|
     t.string   "name"
@@ -67,6 +92,13 @@ ActiveRecord::Schema.define(version: 20140827085626) do
   end
 
   add_index "fieldoptions", ["itemfield_id"], name: "index_fieldoptions_on_itemfield_id"
+
+  create_table "fieldoptions_images", id: false, force: true do |t|
+    t.integer "fieldoption_id"
+    t.integer "image_id"
+  end
+
+  add_index "fieldoptions_images", ["fieldoption_id", "image_id"], name: "fieldoptions_images_index", unique: true
 
   create_table "fieldoptions_items", id: false, force: true do |t|
     t.integer "fieldoption_id"
@@ -88,19 +120,52 @@ ActiveRecord::Schema.define(version: 20140827085626) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
-  create_table "itemfields", force: true do |t|
+  create_table "images", force: true do |t|
     t.string   "name"
-    t.string   "slug"
-    t.integer  "site_id"
+    t.text     "content"
+    t.string   "rawimage"
+    t.string   "md5"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "itemfields", ["site_id"], name: "index_itemfields_on_site_id"
+  create_table "images_itemfields", id: false, force: true do |t|
+    t.integer "image_id"
+    t.integer "itemfield_id"
+  end
+
+  add_index "images_itemfields", ["image_id", "itemfield_id"], name: "images_itemfields_index", unique: true
+
+  create_table "images_items", id: false, force: true do |t|
+    t.integer "image_id"
+    t.integer "item_id"
+  end
+
+  add_index "images_items", ["image_id", "item_id"], name: "images_items_index", unique: true
+
+  create_table "images_rolodexes", id: false, force: true do |t|
+    t.integer "image_id"
+    t.integer "rolodex_id"
+  end
+
+  add_index "images_rolodexes", ["image_id", "rolodex_id"], name: "images_rolodexes_index", unique: true
+
+  create_table "images_virtualcollections", id: false, force: true do |t|
+    t.integer "image_id"
+    t.integer "virtualcollection_id"
+  end
+
+  add_index "images_virtualcollections", ["image_id", "virtualcollection_id"], name: "images_virtualcollections_index", unique: true
+
+  create_table "itemfields", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.string   "name"
-    t.integer  "site_id"
     t.string   "collection_id"
     t.integer  "visability"
     t.boolean  "active"
@@ -109,12 +174,12 @@ ActiveRecord::Schema.define(version: 20140827085626) do
     t.float    "cost"
     t.string   "slug"
     t.string   "alphabet_letter"
-    t.string   "reference_number"
+    t.string   "reference"
+    t.text     "note"
+    t.string   "search_string"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "items", ["site_id"], name: "index_items_on_site_id"
 
   create_table "items_rolodexes", id: false, force: true do |t|
     t.integer "item_id"
@@ -139,24 +204,6 @@ ActiveRecord::Schema.define(version: 20140827085626) do
     t.text     "history"
     t.text     "address"
     t.string   "slug"
-    t.integer  "site_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rolodexes", ["site_id"], name: "index_rolodexes_on_site_id"
-
-  create_table "sites", force: true do |t|
-    t.string   "title"
-    t.string   "code"
-    t.text     "meta_keywords"
-    t.text     "meta_description"
-    t.string   "owner"
-    t.string   "email"
-    t.string   "password"
-    t.string   "header"
-    t.string   "tagline"
-    t.text     "tracker_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -164,12 +211,9 @@ ActiveRecord::Schema.define(version: 20140827085626) do
   create_table "virtualcollections", force: true do |t|
     t.string   "name"
     t.string   "slug"
-    t.integer  "site_id"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "virtualcollections", ["site_id"], name: "index_virtualcollections_on_site_id"
 
 end

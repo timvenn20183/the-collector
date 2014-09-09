@@ -16,3 +16,6 @@
 /tmp
 oc2.sublime-workspace
 import.xls
+/import/load
+/import/images/*
+/public/uploads

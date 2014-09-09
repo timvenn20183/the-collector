@@ -9,10 +9,8 @@ class CreateRolodexes < ActiveRecord::Migration
       t.text :history
       t.text :address
       t.string :slug
-      t.integer :site_id
-
       t.timestamps
     end
-	add_index :rolodexes, :site_id
+
   end
 end

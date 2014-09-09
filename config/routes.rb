@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
 
   root 'main#index'
+
+  match 'search' => 'main#search', via: :get
+  match 'contact' => 'main#contact', via: :get
+  match 'contact_process' => 'main#process_contact', via: :post
+  match 'blogs' => 'blog#index', via: :get
+
+  match 'collection' => 'collection#index', via: :get
+  match 'collection/:id' => 'virtualcollection#view', via: :get
+  match 'collection/:itemfield/:id' => 'fieldoption#view', via: :get
+
+  match 'blogs/:id' => 'blog#view', via: :get
+
+  match 'item/:id' => 'item#view', via: :get
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
