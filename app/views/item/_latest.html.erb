@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Latest items</h3>
+    </div>
+    <% Item.latest.each do |item| %>
+    <div class="col-md-4 col-sm-6 text-center">
+        <% src = "http://placehold.it/700x450" %>
+        <% src = item.images.first.rawimage.url(:latest) if !item.images.blank? %>
+        <img class="img-responsive img-thumbnail img-hover" src="<%= src %>" alt="">
+        <br/>
+        <%= item.name %>
+        <br/>
+    </div>
+    <% end %>
+</div>

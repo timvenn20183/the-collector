@@ -1,0 +1,14 @@
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <%= Blog.latest_blog.title %>
+            </div>
+            <div class="panel-body">
+                <%= Blog.latest_blog.content[0..150] %> ...<br/><br/>
+                <form action="/blogs/<%= Blog.latest_blog.slug %>">
+                    <button type="submit" class="btn btn-default btn-md pull-right">Read more ...</button>
+                </form>
+            </div>
+        </div>
+    </div>

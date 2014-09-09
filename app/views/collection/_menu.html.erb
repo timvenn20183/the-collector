@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		Collections
+	</div>
+    <div class="panel-body">
+    	<% Virtualcollection.all.each do |virtualcollection| %>
+        	<a href="/collection/<%= virtualcollection.slug %>"><%= virtualcollection.name %></a><br/>
+        <% end %>
+	</div>
+</div>
+
+<% Itemfield.itemfields_menu_list.each do |itemfield| %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= itemfield.name %>
+	</div>
+    <div class="panel-body">
+    	<% itemfield.fieldoptions.all.each do |fieldoption| %>
+        	<a href="/collection/<%= fieldoption.itemfield.slug %>/<%= fieldoption.slug %>"><%= fieldoption.name %></a><br/>
+        <% end %>
+	</div>
+</div>
+<% end %>

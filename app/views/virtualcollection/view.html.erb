@@ -1,0 +1,11 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= @virtualcollection.name %>
+	</div>
+	<div class="panel-body">
+		<%= render partial: 'item/list', locals: {items: @items} %>
+		<div class="text-center">
+			<%= will_paginate @items, renderer: BootstrapPagination::Rails %>
+		</div>
+	</div>
+</div>

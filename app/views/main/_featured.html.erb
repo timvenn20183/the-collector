@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><%= Item.featured.name %></h3>
+    </div>
+    <div class="col-md-6">
+        <ul>
+            <li>Collections : <%= Item.featured.get_virtualcollections_string
+%></li>
+            <li>Category : <%= Item.featured.get_categories_string %></li>
+            <li>Condition : <%= Item.featured.get_conditions_string %></li>
+            <li><%= Item.featured.get_rolodexes_string %></li>
+            <li>Year : <%= Item.featured.year %></li>
+            <li><%= Item.featured.get_all_fieldoptions_string %></li>
+        </ul>
+        <p><%= Item.featured.note %></p>
+    </div>
+    <div class="col-md-6">
+        <% src = "http://placehold.it/700x450" %>
+        <% src = Item.featured.images.first.rawimage.url(:featured) if !Item.featured.images.blank? %>
+        <img class="img-responsive img-thumbnail" src="<%= src %>" alt="">
+    </div>
+</div>
