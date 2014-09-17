@@ -4,8 +4,7 @@
 	</div>
     <div class="panel-body">
     	<% Blog.recent_list.each do |blog| %>
-        	<a href="/blogs/<%= blog.slug %>"><%= blog.title %></a><span class="pull-right"><%=  Date::MONTHNAMES[blog.created_at.month] %> <%= blog.created_at.year %>
- </span><br/>
+        	<a href="/blogs/<%= blog.slug %>"><%= blog.title %></a><br/>
         <% end %>
 	</div>
 </div>

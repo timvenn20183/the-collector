@@ -1,18 +1,18 @@
 <div id="maincontent">
     <%= render :partial => 'main/center' %>
-    <%= render :partial => 'main/featured' %>
+    <%= render :partial => 'item/featured', :locals => {item: @featured_item} %>
     <%= render :partial => 'item/latest' %>
     <hr/>
-    <div class="well">
+
     <div class="row">
+        <div class="panel-primary">
         <div class="col-md-10">
-            <p>Please feel free to use the contact option if you are interesting in vintage computers or if you are interested in offering something to the collection. I am always on the lookout for interesting items.</p>
+            <p>Please feel free to use the contact option if you are interesting in vintage computers or if you are interested in offering something to the collection.<br/> I am always on the lookout for interesting items.</p>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-md btn-primary btn-block" href="#">Contact</a>
+            <a class="btn btn-md btn-primary btn-block" href="/contact">Contact</a>
+        </div>
         </div>
     </div>
-</div>
-
 </div>
 

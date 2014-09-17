@@ -43,11 +43,19 @@ class RawimageUploader < CarrierWave::Uploader::Base
   end
 
   version :featured do
-      process :resize_to_fit => [700,0]
+      process :resize_to_fit => [500,0]
   end
 
   version :latest do
-      process :resize_to_fit => [700,0]
+      process :resize_to_fit => [250,0]
+  end
+
+  version :gallery do
+      process :resize_to_fit => [150,0]
+  end
+
+  version :list do
+      process :resize_to_fit => [0,100]
   end
 
   # Override the filename of the uploaded files:

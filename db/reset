@@ -1,4 +1,5 @@
 rake db:drop && rake db:migrate && rake db:seed
 cd ../import
 ./load
+ruby blogs
 

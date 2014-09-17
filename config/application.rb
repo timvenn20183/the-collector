@@ -9,6 +9,10 @@ Bundler.require(*Rails.groups)
 module Oc2
   class Application < Rails::Application
 
+    require 'functions'
+
+    config.assets.paths << "#{Rails.root}/app/assets/html"
+    config.assets.precompile += %w(404.html 500.html)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

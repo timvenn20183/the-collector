@@ -5,7 +5,7 @@ class CreateImages < ActiveRecord::Migration
       t.text :content
       t.string :rawimage
       t.string :md5
-
+      t.string :slug
       t.timestamps
     end
   end

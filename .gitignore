@@ -17,8 +17,7 @@
 /tmp
 oc2.sublime-workspace
 import.xls
-/import/load
-/import/images/*
+/import
 /public/uploads
 =======
 *.rbc

@@ -4,8 +4,9 @@
 	</div>
     <div class="panel-body">
     	<% Virtualcollection.all.each do |virtualcollection| %>
-        	<a href="/collection/<%= virtualcollection.slug %>"><%= virtualcollection.name %></a><br/>
+    		<a href="/collection/<%= virtualcollection.slug %>"><%= virtualcollection.name %></a><span class="badge pull-right"><%= virtualcollection.items.count %></span><br/>
         <% end %>
+
 	</div>
 </div>
 
@@ -16,7 +17,7 @@
 	</div>
     <div class="panel-body">
     	<% itemfield.fieldoptions.all.each do |fieldoption| %>
-        	<a href="/collection/<%= fieldoption.itemfield.slug %>/<%= fieldoption.slug %>"><%= fieldoption.name %></a><br/>
+        	<a href="/collection/<%= fieldoption.itemfield_slug %>/<%= fieldoption.slug %>"><%= fieldoption.name %></a> <span class="badge pull-right"><%= fieldoption.items.count %></span><br/>
         <% end %>
 	</div>
 </div>

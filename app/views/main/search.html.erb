@@ -1,1 +1,8 @@
-<%= @search %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		Items containing the word(s) "<%= @search %>"
+	</div>
+	<div class="panel-body">
+		<%= render partial: 'item/list', locals: {items: @items} %>
+	</div>
+</div>

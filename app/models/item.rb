@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  has_and_belongs_to_many :comments
 
     extend FriendlyId
 
@@ -10,6 +11,7 @@ class Item < ActiveRecord::Base
     has_and_belongs_to_many :rolodexes
     has_and_belongs_to_many :fieldoptions
     has_and_belongs_to_many :images
+
     has_many :itemfields, :through => :fieldoptions
 
     # Validations
@@ -34,7 +36,7 @@ class Item < ActiveRecord::Base
     end
 
     def get_virtualcollections_string
-        self.virtualcollections.pluck(:name).join(" / ")
+        self.virtualcollections.pluck(:name).join(" | ")
     end
 
     # Create and allocate conditions from a comma separated string
@@ -43,7 +45,7 @@ class Item < ActiveRecord::Base
     end
 
     def get_conditions_string
-        self.conditions.pluck(:name).join(" / ")
+        self.conditions.pluck(:name).join(" | ")
     end
 
     # Create and allocate categories from a comma separated string
@@ -52,7 +54,7 @@ class Item < ActiveRecord::Base
     end
 
     def get_categories_string
-        self.categories.pluck(:name).join(" / ")
+        self.categories.pluck(:name).join(" | ")
     end
 
     # Create and allocate rolodexes from a comma separated string
@@ -61,7 +63,7 @@ class Item < ActiveRecord::Base
     end
 
     def get_rolodexes_string
-        self.rolodexes.pluck(:name).join(" / ")
+        self.rolodexes.pluck(:name).join(" | ")
     end
 
     # Create and associate itemfields and fieldoptions based on comma separated string
@@ -72,7 +74,12 @@ class Item < ActiveRecord::Base
     end
 
     def get_all_fieldoptions_string
-        self.fieldoptions.pluck(:name).join(" / ")
+        self.fieldoptions.pluck(:name).join(" | ")
+    end
+
+    def related_items
+        other_items = Item.all-[self]
+
     end
 
     protected
@@ -86,11 +93,11 @@ class Item < ActiveRecord::Base
     def set_search_string
         self.search_string = self.name
         self.search_string += self.year.to_s
-        self.search_string += self.get_rolodexes_string.gsub(" / ","")
-        self.search_string += self.get_categories_string.gsub(" / ","")
-        self.search_string += self.get_conditions_string.gsub(" / ","")
-        self.search_string += self.get_virtualcollections_string.gsub(" / ","")
-        self.search_string += self.get_all_fieldoptions_string.gsub(" / ","")
+        self.search_string += self.get_rolodexes_string.gsub(" | ","")
+        self.search_string += self.get_categories_string.gsub(" | ","")
+        self.search_string += self.get_conditions_string.gsub(" | ","")
+        self.search_string += self.get_virtualcollections_string.gsub(" | ","")
+        self.search_string += self.get_all_fieldoptions_string.gsub(" | ","")
         self.search_string = self.search_string.gsub(" ","").downcase
     end
 

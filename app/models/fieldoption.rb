@@ -8,6 +8,9 @@ class Fieldoption < ActiveRecord::Base
 	has_and_belongs_to_many :images
 	belongs_to :itemfield
 
+	# Delegations
+	delegate :slug, :to => :itemfield, :prefix => true
+
 	# Validations
 	validates :name ,presence: {:message => I18n.t('fieldoption.validations.name')}
 	validates :name ,uniqueness: {:message => I18n.t('fieldoption.validations.name_unique'), :scope => :itemfield_id}

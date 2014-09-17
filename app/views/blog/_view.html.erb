@@ -1,8 +1,14 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<%= @blog.title %><span class="pull-right"><%=  Date::MONTHNAMES[@blog.created_at.month] %> <%= @blog.created_at.year %></span>
+		<%= blog.title %><span class="pull-right"><%=  Date::MONTHNAMES[blog.created_at.month] %> <%= blog.created_at.year %></span>
 	</div>
 	<div class="panel-body">
-		<%= @blog.content %>
+		<%=raw blog.content %>
 	</div>
 </div>
+
+<%= render :partial => 'main/contact', :locals => {blog: blog, comment: Comment.new(subject: blog.title), item: nil} %>
+
+<br/>
+
+<%= render :partial => 'main/comment_list', :locals => {comments: blog.comments.approved} %>
