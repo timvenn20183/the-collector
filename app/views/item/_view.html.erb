@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <%= item.name %>
+    </div>
+    <div class="panel-body">
+        <div>
+            <ul>
+               <%=raw "<li>Collections : " + item.get_virtualcollections_string + "</li>" if !item.get_virtualcollections_string.blank? %>
+               <li>Category : <%= item.get_categories_string %></li>
+               <li>Condition : <%= item.get_conditions_string %></li>
+               <li><%= item.get_rolodexes_string %></li>
+               <li>Year : <%= item.year %></li>
+               <li><%= item.get_all_fieldoptions_string %></li>
+            </ul>
+            <p><%= item.note %></p>
+            <br/>
+        </div>
+        <div class="text-center">
+            <% src = "http://placehold.it/700x450&text=No Image" %>
+            <% src = item.images.first.rawimage.url(:featured) if !item.images.blank? %>
+            <img class="img-responsive img-thumbnail" src="<%= src %>" alt="">
+        </div>
+    </div>
+</div>
+
+<%= render :partial => 'main/contact', :locals => {item: item, comment: Comment.new(subject: item.name), blog: nil} %>
+
+<br/>
+
+<%= render :partial => 'main/comment_list', :locals => {comments: item.comments.approved} %>

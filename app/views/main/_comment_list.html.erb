@@ -1,0 +1,13 @@
+<% comments.each do |comment| %>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <%= comment.name %>
+            <span class="pull-right">
+                <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+            </span>
+        </div>
+        <div class="panel-body">
+            <%= comment.message %>
+        </div>
+    </div>
+<% end %>
