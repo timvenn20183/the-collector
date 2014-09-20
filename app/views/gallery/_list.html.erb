@@ -5,7 +5,7 @@
 <% images.each do |image| %>
 		<div class="col-xs-3 text-center">
 			<%= image.items.first.name if !image.items.first.blank? %></h4>
-			<img class="img-responsive img-thumbnail" src="<%= image.rawimage.url(:gallery) %>" alt=""/>
+			<a href="<%= image.click_through_link %>"><img class="img-responsive img-thumbnail" src="<%= image.rawimage.url(:gallery) %>" alt=""/></a>
 
 		</div>
 	<% if images.index(image)%4 == 3 %>

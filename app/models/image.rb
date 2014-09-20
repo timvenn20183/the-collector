@@ -16,4 +16,11 @@ class Image < ActiveRecord::Base
 	# Other
 	mount_uploader :rawimage, RawimageUploader
 
+	# where clicking the image will take you
+	def click_through_link
+		return '/item/' + self.items.first.slug if !self.items.first.blank?
+		return '/blog/' + self.blogs.first.slug if !self.blogs.first.blank?
+		return "#"
+	end
+
 end

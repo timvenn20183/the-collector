@@ -16,9 +16,9 @@
             <br/>
         </div>
         <div class="text-center">
-            <% src = "http://placehold.it/700x450&text=No Image" %>
-            <% src = item.images.first.rawimage.url(:featured) if !item.images.blank? %>
-            <img class="img-responsive img-thumbnail" src="<%= src %>" alt="">
+            <% if !item.images.blank? %>
+                <img class="img-responsive img-thumbnail" src="<%= item.images.first.rawimage.url(:featured) %>" alt="">
+            <% end %>
         </div>
     </div>
 </div>

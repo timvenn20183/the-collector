@@ -79,7 +79,21 @@ class Item < ActiveRecord::Base
 
     def related_items
         other_items = Item.all-[self]
+        relations = Array.new
+        other_items.each do |other_item|
+            # by name
+            relevance = levenshtein_distance(self.name,other_item.name)
+            # by fieldoptions
+            relevance -= ((self.fieldoptions.pluck(:id) & other_item.fieldoptions.pluck(:id)).count)*10
+            # by colletions
+            relevance -= ((self.virtualcollections.pluck(:id) & other_item.virtualcollections.pluck(:id)).count)*10
+            # rolodex
+            relevance -= ((self.rolodexes.pluck(:id) & other_item.rolodexes.pluck(:id)).count)*5
 
+            relations << [[other_item.id],[relevance]]
+        end
+        relations.sort_by!{|x,y|y}
+        return relations.first(4)
     end
 
     protected

@@ -6,9 +6,9 @@
 
 <% items.each do |item| %>
 	<div class="pull-left">
-		<% src = "http://placehold.it/100x100&text=No Image" %>
-        <% src = item.images.first.rawimage.url(:list) if !item.images.blank? %>
-		<img class="img-responsive img-thumbnail img-hover" src="<%= src %>" alt="">
+		<% if !item.images.blank? %>
+			<img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:list) %>" alt="">
+		<% end %>
 		&nbsp;
 	</div>
 	<div>
