@@ -1,15 +1,13 @@
-<div class="row">
-    <div class="col-lg-12">
-        <h3 class="page-header">Latest items</h3>
-    </div>
-    <% Item.latest.each do |item| %>
-    <div class="col-md-4 col-sm-6 text-center">
-        <% if !item.images.blank? %>
-            <img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:latest)  %>" alt="">
-        <% end %>
-        <br/>
-        <%= item.name %>
-        <br/>
-    </div>
-    <% end %>
+<div class="col-md-12">
+    <h3 class="page-header">Latest items</h3>
 </div>
+<% Item.latest.each do |item| %>
+<div class="col-md-4 col-sm-6 text-center">
+    <% if !item.images.blank? %>
+        <img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:latest)  %>" alt="">
+    <% end %>
+    <br/>
+    <%= item.name %>
+    <br/>
+</div>
+<% end %>
