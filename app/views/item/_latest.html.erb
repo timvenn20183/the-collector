@@ -4,7 +4,7 @@
 <% Item.latest.each do |item| %>
 <div class="col-md-4 col-sm-6 text-center">
     <% if !item.images.blank? %>
-        <img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:latest)  %>" alt="">
+        <a href="<%= item.images.first.click_through_link %>"><img class="img-responsive img-thumbnail" src="<%= item.images.first.rawimage.url(:latest) %>" alt=""/></a>
     <% end %>
     <br/>
     <%= item.name %>
