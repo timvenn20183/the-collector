@@ -35,6 +35,7 @@ class MainController < ApplicationController
     	message = params[:message]
         subject = params[:subject]
         @comment = Comment.create(name: name, email: email, message: message, subject: subject)
+        ContactMailer.send_comment(@comment) if @comment.id != nil
         redirect_to '/contact/' + encrypt(@comment.id.to_s) if @comment.id != nil
         redirect_to '/contact' if @comment.id == nil
     end
