@@ -8,16 +8,17 @@ Rails.application.routes.draw do
   match 'blogs' => 'blog#index', via: :get
   match 'gallery' => 'gallery#index', via: :get
   match 'contact/:id' => 'main#contact', via: :get
+  match 'links' => 'main#links', via: :get
 
   match 'collection' => 'collection#index', via: :get
   match 'items' => 'collection#index', via: :get
   match 'collection/:id' => 'virtualcollection#view', via: :get
   match 'collection/:itemfield/:id' => 'fieldoption#view', via: :get
-  match 'item/:id' => 'item#view', via: :get
+  match 'items/:id' => 'item#view', via: :get
 
   match 'blogs/:id' => 'blog#view', via: :get
-
-  match 'item/:id' => 'item#view', via: :get
+  resources :items
+  resources :blogs
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -16,6 +16,9 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
 	<%= csrf_meta_tags %>
 	<%= favicon_link_tag 'favicon.ico' %>
+	<% if @item != nil %>
+		<meta name="Description" content="<%= @item.meta_description_tag %> ">
+	<% end %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

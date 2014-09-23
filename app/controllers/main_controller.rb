@@ -30,13 +30,17 @@ class MainController < ApplicationController
     end
 
     def process_contact
-    	name = params[:name]
-    	email = params[:email]
-    	message = params[:message]
-        subject = params[:subject]
-        @comment = Comment.create(name: name, email: email, message: message, subject: subject)
-        ContactMailer.send_comment(@comment) if @comment.id != nil
-        redirect_to '/contact/' + encrypt(@comment.id.to_s) if @comment.id != nil
-        redirect_to '/contact' if @comment.id == nil
+        @comment = Comment.create(comment_params)
+        @comment.id != nil ? (redirect_to '/contact/' + encrypt(@comment.id.to_s)) : (redirect_to contact_url if @comment.id == nil)
     end
+
+    def links
+    end
+
+    private
+
+    def comment_params
+        params.permit(:name, :email, :message, :subject)
+    end
+
 end

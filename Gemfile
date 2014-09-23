@@ -21,6 +21,9 @@ gem 'zip'
 gem 'rmagick'
 gem 'friendly_id'
 
+gem 'rack-canonical-host'
+gem 'sitemap_generator'
+
 gem 'iconv'
 gem 'roo'
 gem 'google_drive'

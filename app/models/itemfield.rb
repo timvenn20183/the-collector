@@ -24,6 +24,4 @@ class Itemfield < ActiveRecord::Base
 		return itemfields
 	end
 
-	protected
-
 end

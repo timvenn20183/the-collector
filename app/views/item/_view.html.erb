@@ -10,9 +10,13 @@
                <li>Condition : <%= item.get_conditions_string %></li>
                <li><%= item.get_rolodexes_string %></li>
                <li>Year : <%= item.year %></li>
-               <li><%= item.get_all_fieldoptions_string %></li>
+               <% item.itemfields.uniq.each do |itemfield| %>
+               <li><%= itemfield.name %> : <%= item.fieldoptions_by_itemfield_string(itemfield) %></li>
+               <% end %>
             </ul>
-            <p><%= item.note %></p>
+            <% if !item.note.blank? %>
+                <p><%= item.note %></p>
+            <% end %>
             <br/>
         </div>
         <div class="text-center">

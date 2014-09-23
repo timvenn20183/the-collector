@@ -114,8 +114,13 @@ for row in start..ending
 		end
 end
 
+# update all the related items at the end
+puts "Rebuilding related items. This may take a while so please be patient ..."
+Item.update_related_items
+
 # cleanup
 
+puts "Removing unused entries. This may take a while so please be patient ..."
 Virtualcollection.destroy_unassociated
 Category.destroy_unassociated
 Condition.destroy_unassociated

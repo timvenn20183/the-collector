@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911114220) do
+ActiveRecord::Schema.define(version: 20140922092601) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -195,6 +195,13 @@ ActiveRecord::Schema.define(version: 20140911114220) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "items_relateditems", id: false, force: true do |t|
+    t.integer "item_id"
+    t.integer "relateditem_id"
+  end
+
+  add_index "items_relateditems", ["item_id", "relateditem_id"], name: "items_relateditems_index", unique: true
 
   create_table "items_rolodexes", id: false, force: true do |t|
     t.integer "item_id"

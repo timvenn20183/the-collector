@@ -885,7 +885,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #6f6154;
-  background-color: #eeeeee;
+  background-color: #ffffff;
   /*background-image: URL('background.png');*/
 }
 input,
@@ -950,7 +950,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #6f6154;
+  border-top: 1px solid #b08d46;
 }
 .sr-only {
   position: absolute;
@@ -1204,7 +1204,7 @@ a.bg-danger:hover {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #6f6154;
+  border-bottom: 1px solid #b08d46;
 }
 ul,
 ol {
@@ -4965,7 +4965,17 @@ a.list-group-item-danger.active:focus {
 }
 .panel {
   margin-bottom: 20px;
+  /*background-color: #eeeeee;*/
+
   background-color: #eeeeee;
+  border-color: #dddddd;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#eeeeee));
+  background-image: -webkit-linear-gradient(top, #ffffff, 0%, #eeeeee, 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
+
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -5164,7 +5174,7 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border-color: #dddddd;
+  border-color: #000;
 }
 .panel-default > .panel-heading {
   color: #6f6154;
@@ -5186,8 +5196,18 @@ a.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-heading {
   color: #ffffff;
+  /* background-color: #b08d46;
+  border-color: #b08d46;*/
   background-color: #b08d46;
-  border-color: #b08d46;
+  border-color: #987a3d;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#c2a467), to(#b08d46));
+  background-image: -webkit-linear-gradient(top, #c2a467, 0%, #b08d46, 100%);
+  background-image: -moz-linear-gradient(top, #c2a467 0%, #b08d46 100%);
+  background-image: linear-gradient(to bottom, #c2a467 0%, #b08d46 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc2a467', endColorstr='#ffb08d46', GradientType=0);
+
+
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #b08d46;

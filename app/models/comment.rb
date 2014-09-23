@@ -12,4 +12,12 @@ class Comment < ActiveRecord::Base
 
 	scope :approved, lambda {self.all.order(created_at: :desc)}
 
+	after_create do
+		email_comment
+	end
+
+	def email_comment
+		ContactMailer.send_comment(self)
+	end
+
 end

@@ -12,6 +12,8 @@ class Item < ActiveRecord::Base
     has_and_belongs_to_many :fieldoptions
     has_and_belongs_to_many :images
 
+    has_and_belongs_to_many :relateditems, :class_name => "Item", :association_foreign_key => "relateditem_id", :join_table => "items_relateditems"
+
     has_many :itemfields, :through => :fieldoptions
 
     # Validations
@@ -21,7 +23,7 @@ class Item < ActiveRecord::Base
     friendly_id :name, use: :slugged
 
     scope :featured, lambda {self.last}
-    scope :latest, lambda {self.last(4)[0..2]}
+    scope :latest, lambda {self.last(3)}
 
     before_save do
         self.set_alphabet_letter
@@ -77,23 +79,16 @@ class Item < ActiveRecord::Base
         self.fieldoptions.pluck(:name).join(" | ")
     end
 
-    def related_items
-        other_items = Item.all-[self]
-        relations = Array.new
-        other_items.each do |other_item|
-            # by name
-            relevance = levenshtein_distance(self.name,other_item.name)
-            # by fieldoptions
-            relevance -= ((self.fieldoptions.pluck(:id) & other_item.fieldoptions.pluck(:id)).count)*10
-            # by colletions
-            relevance -= ((self.virtualcollections.pluck(:id) & other_item.virtualcollections.pluck(:id)).count)*10
-            # rolodex
-            relevance -= ((self.rolodexes.pluck(:id) & other_item.rolodexes.pluck(:id)).count)*5
+    def fieldoptions_by_itemfield_string(itemfield)
+        self.fieldoptions.where(:itemfield => itemfield).pluck(:name).join(" | ")
+    end
 
-            relations << [[other_item.id],[relevance]]
-        end
-        relations.sort_by!{|x,y|y}
-        return relations.first(4)
+    def meta_description_tag
+        tag = "Name : " + self.name
+        tag += " ,  " + self.get_rolodexes_string if !self.get_rolodexes_string.blank?
+        tag += " , " + self.get_categories_string if !self.get_categories_string.blank?
+        tag += " , " + self.get_virtualcollections_string if !self.get_virtualcollections_string.blank?
+        tag += " , " + self.get_all_fieldoptions_string if !self.get_all_fieldoptions_string.blank?
     end
 
     protected
@@ -113,6 +108,33 @@ class Item < ActiveRecord::Base
         self.search_string += self.get_virtualcollections_string.gsub(" | ","")
         self.search_string += self.get_all_fieldoptions_string.gsub(" | ","")
         self.search_string = self.search_string.gsub(" ","").downcase
+    end
+
+    def self.update_related_items
+        @items = Item.all
+        @items.each do |item|
+            other_items = @items-[item]
+            relations = Array.new
+            @fieldoptions = item.fieldoptions.pluck(:id)
+            @virtualcollections = item.virtualcollections.pluck(:id)
+            @rolodexes = item.rolodexes.pluck(:id)
+            other_items.each do |other_item|
+                if !other_item.images.blank?
+                    # by name
+                    relevance = levenshtein_distance(item.name,other_item.name)
+                    # by fieldoptions
+                    relevance -= ((@fieldoptions & other_item.fieldoptions.pluck(:id)).count)*10
+                    # by colletions
+                    relevance -= ((@virtualcollections & other_item.virtualcollections.pluck(:id)).count)*10
+                    # rolodex
+                    relevance -= ((@rolodexes & other_item.rolodexes.pluck(:id)).count)*5
+                    relations << [[other_item.id],[relevance]]
+                end
+            end
+            item.relateditems = []
+            relations.sort_by!{|x,y|y}
+            relations.first(3).each {|x,y| item.relateditem_ids << x}
+        end
     end
 
 end

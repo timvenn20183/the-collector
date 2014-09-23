@@ -131,6 +131,9 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-canonical-host (0.1.0)
+      addressable
+      rack (~> 1.0)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.4)
@@ -192,6 +195,8 @@ GEM
       rdoc (~> 4.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
+    sitemap_generator (5.0.5)
+      builder
     slop (3.6.0)
     spreadsheet (1.0.0)
       ruby-ole (>= 1.0)
@@ -249,6 +254,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  rack-canonical-host
   rails (= 4.1.4)
   rb-fsevent
   rmagick
@@ -257,6 +263,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers
+  sitemap_generator
   spring
   sqlite3
   turbolinks

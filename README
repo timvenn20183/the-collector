@@ -20,3 +20,9 @@ The online collections database aims to be a generic and highly configurable web
 ** Tests **
 
 - Currently all the rspec tests report in English
+
+- Related run times
+#1 - 15:48 to 16:06 = 18 minutes (no caching)
+#2 - 16:08 to 16:16 = 12 minutes (cached items list)
+#3 - 43 seconds without the other lookups. Just the name
+#4 - 16:26 to 16:30 = 4 minutes (cached item relationships)
