@@ -7,7 +7,7 @@
 <% items.each do |item| %>
 	<div class="pull-left">
 		<% if !item.images.blank? %>
-			<img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:list) %>" alt="">
+			<a href="/items/<%= item.slug %>"><img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:list) %>" title="Click to view <%= item.name %>"></a>	
 		<% end %>
 		&nbsp;
 	</div>
