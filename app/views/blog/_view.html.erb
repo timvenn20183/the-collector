@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<%= blog.title %><span class="pull-right"><%=  Date::MONTHNAMES[blog.created_at.month] %> <%= blog.created_at.year %></span>
+		<%= blog.title %><span class="pull-right"><%= blog.created_at.day.ordinalize %> <%=  Date::MONTHNAMES[blog.created_at.month] %> <%= blog.created_at.year %></span>
 	</div>
 	<div class="panel-body">
 		<%=raw blog.content %>
