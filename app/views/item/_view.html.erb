@@ -27,6 +27,8 @@
     </div>
 </div>
 
+<%= render :partial => 'item/related', :locals => {item: item} %>
+
 <%= render :partial => 'main/contact', :locals => {item: item, comment: Comment.new(subject: item.name), blog: nil} %>
 
 <br/>

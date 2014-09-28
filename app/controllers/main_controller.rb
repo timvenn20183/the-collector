@@ -31,6 +31,8 @@ class MainController < ApplicationController
 
     def process_contact
         @comment = Comment.create(comment_params)
+        @comment.blogs << Blog.find_by_slug(params[:blog]) if !params[:blog].blank?
+        @comment.items << Item.find_by_slug(params[:item]) if !params[:item].blank?
         @comment.id != nil ? (redirect_to '/contact/' + encrypt(@comment.id.to_s)) : (redirect_to contact_url if @comment.id == nil)
     end
 

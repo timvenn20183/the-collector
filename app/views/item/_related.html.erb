@@ -1,0 +1,18 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		Related items
+	</div>
+	<div class="panel-body">
+		<table border="0" width="100%">
+			<tr>
+			<% item.relateditems.each do |item| %>
+				<td align="center">
+					<a href="/items/<%= item.slug %>"><img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:list) %>" title="Click to view <%= item.name %>"></a>
+					<br/><br/>
+					<%= item.name %>
+				</td>
+			<% end %>
+			</tr>
+		</table>
+	</div>
+</div>

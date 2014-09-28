@@ -20,6 +20,7 @@ gem 'will_paginate-bootstrap'
 gem 'zip'
 gem 'rmagick'
 gem 'friendly_id'
+gem 'font-awesome-rails'
 
 gem 'rack-canonical-host'
 gem 'sitemap_generator'
@@ -51,7 +52,7 @@ gem 'spring',        group: :development
 
 # Use debugger
 #gem 'debugger', group: [:development, :test]
-#gem 'byebug', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
 gem 'god'
 

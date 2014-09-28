@@ -8,9 +8,8 @@
 
 <%= render 'main/menu' %>
 
-<%= render 'main/latest_blog' %>
-
-<%= render 'main/about' %>
-
+<div class="col-md-8">
+	<%= render :partial => 'blog/view', :locals => {blog: Blog.latest} %>
 </div>
 
+</div>

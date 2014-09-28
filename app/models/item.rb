@@ -133,7 +133,7 @@ class Item < ActiveRecord::Base
             end
             item.relateditems = []
             relations.sort_by!{|x,y|y}
-            relations.first(3).each {|x,y| item.relateditem_ids << x}
+            relations.first(3).each {|x,y| item.relateditems << Item.find(x)}
         end
     end
 

@@ -6,9 +6,13 @@
 		<%=raw blog.content %>
 	</div>
 </div>
+
+<% if @allow_blog_comments %>
 	<%= render :partial => 'main/facebook' %>
 <br/><br/>
 <%= render :partial => 'main/contact', :locals => {blog: blog, comment: Comment.new(subject: blog.title), item: nil} %>
 <br/>
 
 <%= render :partial => 'main/comment_list', :locals => {comments: blog.comments.approved} %>
+
+<% end %>

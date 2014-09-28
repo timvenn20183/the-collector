@@ -5,12 +5,13 @@
 <% end %>
 
 <% items.each do |item| %>
-	<div class="pull-left">
-		<% if !item.images.blank? %>
-			<a href="/items/<%= item.slug %>"><img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:list) %>" title="Click to view <%= item.name %>"></a>	
-		<% end %>
-		&nbsp;
-	</div>
+	<% if !item.images.blank? %>
+		<div class="pull-left">
+			<a href="/items/<%= item.slug %>"><img class="img-responsive img-thumbnail img-hover" src="<%= item.images.first.rawimage.url(:list) %>" title="Click to view <%= item.name %>"></a>
+			&nbsp;
+		</div>
+	<% end %>
+
 	<div>
 		<a href="/items/<%= item.slug %>"><%= item.name %></a>
 		<br/>
