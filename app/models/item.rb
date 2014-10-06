@@ -121,7 +121,7 @@ class Item < ActiveRecord::Base
             other_items.each do |other_item|
                 if !other_item.images.blank?
                     # by name
-                    relevance = levenshtein_distance(item.name,other_item.name)
+                    relevance = levenshtein_distance(item.name,other_item.name) * 0.1
                     # by fieldoptions
                     relevance -= ((@fieldoptions & other_item.fieldoptions.pluck(:id)).count)*10
                     # by colletions
