@@ -10,11 +10,11 @@ SitemapGenerator::Sitemap.create do
   add '/blogs', :changefreq => 'daily', :priority => 0.9
   add '/links', :changefreq => 'daily', :priority => 0.9
 
-  Item.find_each do |item|
-    add item_path(item), lastmod: item.updated_at
-  end
   Blog.find_each do |blog|
     add blog_path(blog), lastmod: blog.updated_at
+  end
+  Item.find_each do |item|
+    add item_path(item), lastmod: item.updated_at
   end
 
   # Put links creation logic here.
