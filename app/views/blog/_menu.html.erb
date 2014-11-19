@@ -3,7 +3,13 @@
 		Recent blogs
 	</div>
     <div class="panel-body">
+        <% blog_date = "" %>
     	<% Blog.recent_list.each do |blog| %>
+            <% working_date = Date::MONTHNAMES[blog.created_at.month] + " " + blog.created_at.year.to_s %>
+            <% if blog_date != working_date then %>
+                <strong><%= working_date %> <br/></strong>
+                <% blog_date = working_date %>
+            <% end %>
         	<a href="/blogs/<%= blog.slug %>"><%= blog.title %></a><br/>
         <% end %>
 	</div>
