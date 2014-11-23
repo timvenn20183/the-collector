@@ -22,12 +22,12 @@ item_fields = Array.new
 # connect to google
 username = ARGV[0]
 password = ARGV[1]
-file = ARGV[2]
+file_key = ARGV[2]
 id = ARGV[3]
 
 # connect to google
 session = GoogleDrive.login(username,password)
-sheet = session.spreadsheet_by_key('1Qu2RTD5TNiF5nLGmuAYXArL5cnIjFR1ecSAYFPul_tA').worksheets[0]
+sheet = session.spreadsheet_by_key(file_key).worksheets[0]
 
 # we have the sheet so lets start processing
 
@@ -103,7 +103,7 @@ for row in start..ending
         images = sheet[row,headers['images']].split(",")
         images.each do |image|
 	    	# get MD5
-	   		md5 = Digest::MD5.hexdigest(File.read(image))
+	   		md5 = Digest::MD5.hexdigest(File.read('../images/' + image))
 		    activeimage =  Image.find_or_create_by(md5: md5)
 		    # is a new image
 		    if activeimage.id == nil then

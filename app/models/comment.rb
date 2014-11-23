@@ -20,4 +20,11 @@ class Comment < ActiveRecord::Base
 		ContactMailer.send_comment(self)
 	end
 
+	def self.create_with_associations(comment_params,blog_slug,item_slug)
+		comment = Comment.create(comment_params)
+		comment.blogs << Blog.find_by_slug(blog_slug) if !blog_slug.blank?
+        comment.items << Item.find_by_slug(item_slug) if !item_slug.blank?
+        return comment
+	end
+
 end

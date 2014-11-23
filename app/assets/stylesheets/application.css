@@ -129,3 +129,12 @@
 .navbar-custom .navbar-link:hover {
   color: #c0c0c0;
 }
+
+.blog_image_pad_right {
+    margin-right : 15px;
+}
+
+.blog_image_pad_left {
+    margin-left : 15px;
+}
+

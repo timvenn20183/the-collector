@@ -1,0 +1,11 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		Collections
+	</div>
+    <div class="panel-body">
+    	<% Virtualcollection.all.order(:name).each do |virtualcollection| %>
+    		<a href="/collection/<%= virtualcollection.slug %>"><%= virtualcollection.name %></a><span class="badge pull-right"><%= virtualcollection.items.count %></span><br/>
+        <% end %>
+
+	</div>
+</div>

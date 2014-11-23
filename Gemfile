@@ -14,6 +14,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# For dropbox file integration
+#gem 'dropbox-sdk'
+
+# For google drive intergration
+#gem 'google-api-client'
+
 gem 'carrierwave'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

@@ -18,6 +18,9 @@
 oc2.sublime-workspace
 import.xls
 /import
+/images/*
+/scripts/import
+/scripts/blogs
 /public/uploads
 =======
 *.rbc

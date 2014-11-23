@@ -1,14 +1,16 @@
 <div class="row">
 	<div class="col-lg-12">
 		<h3 class="page-header">
-			Welcome to the oldcomputers website <%= render 'main/facebook' %>
-
+			Welcome to the oldcomputers website <%= render 'main/facebook' %>&nbsp;<%= render 'main/twitter' %>
         </h3>
 	</div>
 
-<%= render 'main/menu' %>
+<div class="col-md-3">
+	<%= render 'main/menu' %>
+	<%= render 'collection/itemfields' %>
+</div>
 
-<div class="col-md-8">
+<div class="col-md-9">
 	<%= render :partial => 'blog/view', :locals => {blog: Blog.latest} %>
 </div>
 

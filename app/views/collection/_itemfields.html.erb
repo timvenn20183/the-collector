@@ -1,0 +1,12 @@
+<% Itemfield.all.itemfields_menu_list.each do |itemfield| %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= itemfield.name %>
+	</div>
+    <div class="panel-body">
+    	<% itemfield.fieldoptions.all.order(:name).each do |fieldoption| %>
+        	<a href="/collection/<%= fieldoption.itemfield_slug %>/<%= fieldoption.slug %>"><%= fieldoption.name %></a> <span class="badge pull-right"><%= fieldoption.items.count %></span><br/>
+        <% end %>
+	</div>
+</div>
+<% end %>

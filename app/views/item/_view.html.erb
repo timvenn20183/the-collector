@@ -5,13 +5,13 @@
     <div class="panel-body">
         <div>
             <ul>
-               <%=raw "<li>Collections : " + item.get_virtualcollections_string + "</li>" if !item.get_virtualcollections_string.blank? %>
-               <li>Category : <%= item.get_categories_string %></li>
-               <li>Condition : <%= item.get_conditions_string %></li>
-               <li><%= item.get_rolodexes_string %></li>
-               <li>Year : <%= item.year %></li>
+               <li><strong><%= item.get_rolodexes_string %></strong></li>
+               <%=raw "<li><strong>Collections : </strong>" + item.get_virtualcollections_string + "</li>" if !item.get_virtualcollections_string.blank? %>
+               <li><strong>Category : </strong> <%= item.get_categories_string %></li>
+               <li><strong>Condition : </strong><%= item.get_conditions_string %></li>
+               <li><strong>Year : </strong><%= item.year %></li>
                <% item.itemfields.uniq.each do |itemfield| %>
-               <li><%= itemfield.name %> : <%= item.fieldoptions_by_itemfield_string(itemfield) %></li>
+               <li><strong><%= itemfield.name %> :</strong> <%= item.fieldoptions_by_itemfield_string(itemfield) %></li>
                <% end %>
             </ul>
             <% if !item.note.blank? %>
