@@ -1,7 +1,4 @@
 <% if items.count > 10 %>
-<div class="text-center">
-	<%= will_paginate items, renderer: BootstrapPagination::Rails %>
-</div>
 <% end %>
 
 <% items.each do |item| %>
@@ -26,5 +23,6 @@
 <% end %>
 
 <div class="text-center">
-	<%= will_paginate items, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate items, renderer: BootstrapPagination::Rails %>
 </div>
+

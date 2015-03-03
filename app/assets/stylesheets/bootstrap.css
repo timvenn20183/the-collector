@@ -1,6 +1,8 @@
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
+/*  font-family : "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -4978,8 +4980,13 @@ a.list-group-item-danger.active:focus {
 
   border: 1px solid transparent;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+/*  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);*/
+
+   box-shadow:8px 8px 4px rgba(95,79,89,0.55);
+    -webkit-box-shadow:8px 8px 4px rgba(95,79,89,0.55);
+    -moz-box-shadow:8px 8px 4px rgba(95,79,89,0.55);
+
 }
 .panel-body {
   padding: 15px;
