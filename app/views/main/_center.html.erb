@@ -12,6 +12,11 @@
 
 <div class="col-md-9">
 	<%= render :partial => 'blog/view', :locals => {blog: Blog.latest} %>
+
+    <% if !Blog.secondlast.blank? %>
+        &nbsp;
+    	<%= render :partial => 'blog/view', :locals => {blog: Blog.secondlast} %>
+    <% end %>
 </div>
 
 </div>

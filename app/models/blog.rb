@@ -12,6 +12,7 @@ class Blog < ActiveRecord::Base
 	validates :title, presence: {:message => I18n.t('blog.validations.title')}
 
 	scope :latest, lambda {self.last}
+	scope :secondlast, lambda {self.offset(1).last}
     scope :recent_list, lambda {self.order(created_at: :desc).all}
 
 	protected
