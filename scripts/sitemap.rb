@@ -2,7 +2,7 @@ require 'rubygems'
 require '../config/environment'
 require 'sitemap_generator'
 
-SitemapGenerator::Sitemap.default_host = 'http://oldcomputers.co.za'
+SitemapGenerator::Sitemap.default_host = 'http://www.oldcomputers.co.za'
 SitemapGenerator::Sitemap.compress = false
 SitemapGenerator::Sitemap.create do
   add '/', :changefreq => 'daily', :priority => 0.9
